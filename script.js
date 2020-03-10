@@ -121,7 +121,7 @@ const fire = (event) => {
         || target.tagName !== 'TD' || 
         !game.shipCount) return;
     show.miss(target);
-    console.log(game.shipCount);
+
     play.updateData = 'shot';
     for (let i=0; i<game.ships.length; i++) {
         const ship = game.ships[i];
@@ -135,6 +135,106 @@ const fire = (event) => {
                 play.updateData = 'dead';
                 for (const cell of ship.location) {
                     show.dead(document.getElementById(cell));
+
+                    if (Math.floor(cell/10) >= 1 && Math.floor(cell/10) < 9) {
+                        
+
+                        for (let i=Math.floor(cell/10) - 1; i<Math.floor(cell/10) + 2; i++ ) {
+                            if(cell%10 >=1 && cell%10 <9) {
+
+
+                                for(let j=cell%10-1; j<cell%10+2; j++){
+                                    let newcoord = i + '' + j;
+                                    
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 9) {
+                                for (let j=8;j<10;j++) {
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 0) {
+                                for(let j=0;j<2;j++) {
+                                    
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            }
+                        }
+
+
+                    } else if (Math.floor(cell/10) == 9) {
+                        for (let i=8;i<10;i++) {
+                            if(cell%10 >=1 && cell%10 <9) {
+
+
+                                for(let j=cell%10-1; j<cell%10+2; j++){
+                                    let newcoord = i + '' + j;
+                                    
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 9) {
+                                for (let j=8;j<10;j++) {
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 0) {
+                                for(let j=0;j<2;j++) {
+                                    
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            }
+                        }
+                    
+
+                    } else if(Math.floor(cell/10)==0) {
+                        for(let i=0;i<2;i++) {
+                            if(cell%10 >=1 && cell%10 <9) {
+
+
+                                for(let j=cell%10-1; j<cell%10+2; j++){
+                                    let newcoord = i + '' + j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 9) {
+                                for (let j=8;j<10;j++) {
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            } else if (cell%10 == 0) {
+                                for(let j=0;j<2;j++) {
+                                    
+                                    let newcoord = i+''+j;
+                                    if(document.getElementById(newcoord).classList.length < 1) {
+                                        show.miss(document.getElementById(newcoord));
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 game.shipCount -= 1;
